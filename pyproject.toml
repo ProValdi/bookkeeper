@@ -11,6 +11,8 @@ packages = [{include = "bookkeeper"}]
 python = "^3.10"
 pytest-cov = "^4.0.0"
 
+[tool.poetry.scripts]
+simple = "bookkeeper.simple_client:simple"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.2.0"
