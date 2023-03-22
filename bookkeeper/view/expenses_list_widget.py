@@ -15,6 +15,12 @@ from PyQt5.QtWidgets import (
     QPushButton, QComboBox, QInputDialog, QMessageBox,
 )
 
+FLAGS_EN_SEL_EDIT: Union[Qt.ItemFlags, Qt.ItemFlag] = Union[Qt.ItemFlag.ItemIsEnabled,
+                                                            Qt.ItemFlag.ItemIsSelectable,
+                                                            Qt.ItemFlag.ItemIsEditable]
+
+FLAGS_EN_SEL: Union[Qt.ItemFlags, Qt.ItemFlag] = Union[Qt.ItemFlag.ItemIsEnabled, Qt.ItemFlag.ItemIsSelectable]
+
 
 class ExpensesListWidget(QWidget):
     """
@@ -54,16 +60,9 @@ class ExpensesListWidget(QWidget):
         for row in range(self.table.rowCount()):
             for col in range(self.table.columnCount()):
                 if col == 0:
-                    flags_en_sel: Union[Qt.ItemFlags, Qt.ItemFlag]
-                    flags_en_sel.__add__(Qt.ItemFlag.ItemIsEnabled)
-                    flags_en_sel.__add__(Qt.ItemFlag.ItemIsSelectable)
-                    self.table.item(row, col).setFlags(flags_en_sel)
+                    self.table.item(row, col).setFlags(FLAGS_EN_SEL)
                 else:
-                    flags_en_sel_edit: Union[Qt.ItemFlags, Qt.ItemFlag]
-                    flags_en_sel_edit.__add__(Qt.ItemFlag.ItemIsEditable)
-                    flags_en_sel_edit.__add__(Qt.ItemFlag.ItemIsEnabled)
-                    flags_en_sel_edit.__add__(Qt.ItemFlag.ItemIsSelectable)
-                    self.table.item(row, col).setFlags(flags_en_sel_edit)
+                    self.table.item(row, col).setFlags(FLAGS_EN_SEL_EDIT)
 
     def update_table(self, expenses: List[Dict[str, str]]) -> None:
         """
