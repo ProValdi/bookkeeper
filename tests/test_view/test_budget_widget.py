@@ -34,7 +34,7 @@ def test_budget_widget_set_month_budget(budget_widget):
 
 def test_budget_widget_set_month(budget_widget):
     budget_widget.set_month(2023, 3)
-    assert budget_widget.month_label.text() == "Бюджет за March 2023"
+    assert budget_widget.month_label.text() == "Бюджет за марта 2023"
 
 
 def test_budget_widget_update_day_budget(qtbot, budget_widget):

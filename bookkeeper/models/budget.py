@@ -42,7 +42,7 @@ class Budget:
         -------
         Созданный объект Budget
         """
-        term = datetime.now().replace(day=1)
+        term = datetime.now()
         existing_budgets = repo.get_all({'term': term, 'period': MONTH})
         if existing_budgets:
             return existing_budgets[0]
