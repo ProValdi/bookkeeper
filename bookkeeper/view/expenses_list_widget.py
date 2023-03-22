@@ -15,11 +15,11 @@ from PyQt5.QtWidgets import (
     QPushButton, QComboBox, QInputDialog, QMessageBox,
 )
 
-FLAGS_EN_SEL_EDIT: Union[Qt.ItemFlags, Qt.ItemFlag] = Union[Qt.ItemFlag.ItemIsEnabled,
-                                                            Qt.ItemFlag.ItemIsSelectable,
-                                                            Qt.ItemFlag.ItemIsEditable]
+FLAGS_EN_SEL_EDIT: Union[Qt.ItemFlags, Qt.ItemFlag] = Qt.ItemFlag.ItemIsEnabled | \
+                                                            Qt.ItemFlag.ItemIsSelectable | \
+                                                            Qt.ItemFlag.ItemIsEditable
 
-FLAGS_EN_SEL: Union[Qt.ItemFlags, Qt.ItemFlag] = Union[Qt.ItemFlag.ItemIsEnabled, Qt.ItemFlag.ItemIsSelectable]
+FLAGS_EN_SEL: Union[Qt.ItemFlags, Qt.ItemFlag] = Qt.ItemFlag.ItemIsEnabled | Qt.ItemFlag.ItemIsSelectable
 
 
 class ExpensesListWidget(QWidget):
