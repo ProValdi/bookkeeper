@@ -8,7 +8,7 @@ from PyQt5.QtWidgets import QListWidgetItem
 from bookkeeper.view.category_widget import CategoryWidget
 
 
-@pytest.fixture
+@pytest.fixture(autouse=True)
 def category_widget(qtbot):
     widget = CategoryWidget()
     qtbot.addWidget(widget)

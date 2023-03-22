@@ -3,7 +3,7 @@ from bookkeeper.repository.memory_repository import MemoryRepository
 import pytest
 
 
-@pytest.fixture
+@pytest.fixture(autouse=True)
 def custom_class():
     class Custom():
         pk = 0
@@ -11,7 +11,7 @@ def custom_class():
     return Custom
 
 
-@pytest.fixture
+@pytest.fixture(autouse=True)
 def repo():
     return MemoryRepository()
 

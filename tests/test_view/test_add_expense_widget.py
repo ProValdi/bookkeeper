@@ -9,7 +9,7 @@ from pytestqt.qtbot import QtBot
 from bookkeeper.view.add_expense_widget import AddExpenseWidget
 
 
-@pytest.fixture
+@pytest.fixture(autouse=True)
 def widget(qtbot: QtBot) -> AddExpenseWidget:
     widget = AddExpenseWidget()
     qtbot.addWidget(widget)

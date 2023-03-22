@@ -8,7 +8,7 @@ from PyQt5.QtWidgets import QLineEdit
 from bookkeeper.view.budget_widget import BudgetWidget
 
 
-@pytest.fixture
+@pytest.fixture(autouse=True)
 def budget_widget(qtbot):
     widget = BudgetWidget()
     qtbot.addWidget(widget)

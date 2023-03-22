@@ -9,7 +9,7 @@ from PyQt5.QtCore import Qt, QPoint
 from bookkeeper.view.expenses_list_widget import ExpensesListWidget
 
 
-@pytest.fixture
+@pytest.fixture(autouse=True)
 def expenses_list_widget(qtbot):
     widget = ExpensesListWidget()
     qtbot.addWidget(widget)

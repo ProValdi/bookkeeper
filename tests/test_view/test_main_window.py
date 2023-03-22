@@ -11,7 +11,7 @@ from bookkeeper.view.add_expense_widget import AddExpenseWidget
 from bookkeeper.view.category_widget import CategoryWidget
 
 
-@pytest.fixture
+@pytest.fixture(autouse=True)
 def qtab_widget(qtbot):
     tab_widget = QTabWidget()
     expenses_list = ExpensesListWidget()

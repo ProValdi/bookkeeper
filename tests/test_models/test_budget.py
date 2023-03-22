@@ -5,7 +5,7 @@ from bookkeeper.repository.memory_repository import MemoryRepository
 import pytest
 
 
-@pytest.fixture
+@pytest.fixture(autouse=True)
 def repo():
     return MemoryRepository()
 

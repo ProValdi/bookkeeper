@@ -5,7 +5,7 @@ from dataclasses import dataclass
 from bookkeeper.repository.sqlite_repository import SQLiteRepository
 
 
-@pytest.fixture
+@pytest.fixture(autouse=True)
 def test_class():
     @dataclass
     class Test:
@@ -15,7 +15,7 @@ def test_class():
     return Test
 
 
-@pytest.fixture
+@pytest.fixture(autouse=True)
 def repo(tmp_path, test_class):
     db_file = tmp_path / 'test.db'
     r = SQLiteRepository(str(db_file), test_class)

@@ -9,7 +9,7 @@ from bookkeeper.models.category import Category
 from bookkeeper.repository.memory_repository import MemoryRepository
 
 
-@pytest.fixture
+@pytest.fixture(autouse=True)
 def repo():
     return MemoryRepository()
 
