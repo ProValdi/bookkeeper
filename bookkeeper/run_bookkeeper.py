@@ -14,6 +14,7 @@ from bookkeeper.repository.sqlite_repository import SQLiteRepository
 
 from bookkeeper.bookkeeper_presenter import Presenter
 
+
 def main() -> None:
     """
     Запускает приложение бухгалтерского учета,

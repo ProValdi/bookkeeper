@@ -24,6 +24,7 @@ class AddExpenseWidget(QWidget):
 
     def __init__(self) -> None:
         super().__init__()
+        self.categories: List[Tuple[int, str]] = [(1, "Default")]
 
         # создаёт лейаут для размещения полей расходов
         layout = QFormLayout()

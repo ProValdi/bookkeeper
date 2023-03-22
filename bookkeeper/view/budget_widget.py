@@ -26,24 +26,7 @@ class BudgetWidget(QWidget):
     def __init__(self) -> None:
         super().__init__()
 
-        current_month = QDate.currentDate().toString("dd MMMM yyyy")
-        self.month_label = QLabel(f"Бюджет за {current_month}")
-        self.month_label.setStyleSheet("font-size: 36px; font-weight: bold;")
-
-        self.month_budget_label = QLabel("0.00")
-        self.month_budget_label.setStyleSheet("font-size: 24px;")
-
-        self.week_label = QLabel("Бюджет на неделю:")
-        self.week_label.setStyleSheet("font-size: 16px;")
-
-        self.week_budget_label = QLabel("0.00")
-        self.week_budget_label.setStyleSheet("font-size: 14px;")
-
-        self.day_label = QLabel("Бюджет за день:")
-        self.day_label.setStyleSheet("font-size: 16px;")
-
-        self.day_budget_label = QLabel("0.00")
-        self.day_budget_label.setStyleSheet("font-size: 14px;")
+        self._setup_labels_for_widget()
 
         group_box = QGroupBox("ЗАДАТЬ НОВЫЙ БЮДЖЕТ:")
         group_layout = QGridLayout()
@@ -101,6 +84,26 @@ class BudgetWidget(QWidget):
             lambda: self.update_month_budget(str(self.month_budget_edit.text())))
 
         self.expenses_updated.connect(self.update_expenses_labels)
+
+    def _setup_labels_for_widget(self) -> None:
+        current_month = QDate.currentDate().toString("dd MMMM yyyy")
+        self.month_label = QLabel(f"Бюджет за {current_month}")
+        self.month_label.setStyleSheet("font-size: 36px; font-weight: bold;")
+
+        self.month_budget_label = QLabel("0.00")
+        self.month_budget_label.setStyleSheet("font-size: 24px;")
+
+        self.week_label = QLabel("Бюджет на неделю:")
+        self.week_label.setStyleSheet("font-size: 16px;")
+
+        self.week_budget_label = QLabel("0.00")
+        self.week_budget_label.setStyleSheet("font-size: 14px;")
+
+        self.day_label = QLabel("Бюджет за день:")
+        self.day_label.setStyleSheet("font-size: 16px;")
+
+        self.day_budget_label = QLabel("0.00")
+        self.day_budget_label.setStyleSheet("font-size: 14px;")
 
     def set_month_budget(self, value: float) -> None:
         """

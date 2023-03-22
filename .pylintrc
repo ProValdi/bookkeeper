@@ -1,2 +1,4 @@
 [FORMAT]
+max-line-length=130
 good-names=pk,i,x
+extension-pkg-whitelist=PyQt5,StandardButton,ItemFlag
