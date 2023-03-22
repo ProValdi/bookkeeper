@@ -214,8 +214,8 @@ class Presenter:
             msg_box = QMessageBox()
             msg_box.setText(
                 f"Вы действительно хотите изменить категорию на {category.name}?")
-            msg_box.setStandardButtons(
-                QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No)
+            msg_box.addButton(QMessageBox.StandardButton.Yes)
+            msg_box.addButton(QMessageBox.StandardButton.No)
             msg_box.setDefaultButton(QMessageBox.StandardButton.No)
             yes_button = msg_box.button(QMessageBox.StandardButton.Yes)
             yes_button.setText("Да")
@@ -452,7 +452,7 @@ class Presenter:
             days=i)).strftime('%Y-%m-%d') for i in range(7)]
         week_expenses = [self.exp_repo.get_all(
             where={'strftime("%Y-%m-%d", expense_date)': date_str}) for date_str in
-                         week_dates]
+            week_dates]
         total_amount_week = sum(
             sum(float(expense.amount)
                 for expense in day_expenses) for day_expenses in week_expenses)

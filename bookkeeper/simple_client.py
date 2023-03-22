@@ -8,7 +8,7 @@ from bookkeeper.repository.memory_repository import MemoryRepository
 from bookkeeper.utils import read_tree
 
 
-def simple():
+def simple() -> None:
     cat_repo = MemoryRepository[Category]()
     exp_repo = MemoryRepository[Expense]()
 

@@ -3,7 +3,7 @@
 для отображения информации о расходах таблицей.
 """
 from datetime import datetime
-from typing import cast, List, Dict, Tuple
+from typing import cast, List, Dict, Tuple, Union
 
 from PyQt5.QtCore import pyqtSignal, Qt
 from PyQt5.QtWidgets import (
@@ -54,13 +54,16 @@ class ExpensesListWidget(QWidget):
         for row in range(self.table.rowCount()):
             for col in range(self.table.columnCount()):
                 if col == 0:
-                    self.table.item(row, col).setFlags(
-                        Qt.ItemFlag.ItemIsEnabled | Qt.ItemFlag.ItemIsSelectable)
+                    flags_en_sel: Union[Qt.ItemFlags, Qt.ItemFlag]
+                    flags_en_sel.__add__(Qt.ItemFlag.ItemIsEnabled)
+                    flags_en_sel.__add__(Qt.ItemFlag.ItemIsSelectable)
+                    self.table.item(row, col).setFlags(flags_en_sel)
                 else:
-                    self.table.item(row, col).setFlags(
-                        Qt.ItemFlag.ItemIsEditable |
-                        Qt.ItemFlag.ItemIsEnabled |
-                        Qt.ItemFlag.ItemIsSelectable)
+                    flags_en_sel_edit: Union[Qt.ItemFlags, Qt.ItemFlag]
+                    flags_en_sel_edit.__add__(Qt.ItemFlag.ItemIsEditable)
+                    flags_en_sel_edit.__add__(Qt.ItemFlag.ItemIsEnabled)
+                    flags_en_sel_edit.__add__(Qt.ItemFlag.ItemIsSelectable)
+                    self.table.item(row, col).setFlags(flags_en_sel_edit)
 
     def update_table(self, expenses: List[Dict[str, str]]) -> None:
         """
@@ -160,7 +163,7 @@ class EditableTableWidgetItem(QTableWidgetItem):
     def __init__(self, text: str) -> None:
         super().__init__(text)
 
-    def flags(self) -> Qt.ItemFlag:
+    def flags(self) -> Qt.ItemFlags:
         """
         Устанавливает флаги для ячеек таблицы
         """
