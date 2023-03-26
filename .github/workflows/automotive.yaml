@@ -9,7 +9,6 @@ on:
 jobs:
   run-checks:
     runs-on: ubuntu-latest
-    container: node:14.16
     steps:
       - uses: actions/checkout@v2
 
@@ -70,3 +69,9 @@ jobs:
       # And finally run tests.
       - name: run tests
         run: poetry run pytest -k "not test_sqlite_repository.py" --cov --import-mode=append tests/
+
+      - name: run pylint
+        run: poetry run pylint bookkeeper
+
+      - name: run flake8
+        run: poetry run flake8 bookkeeper
