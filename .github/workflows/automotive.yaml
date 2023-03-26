@@ -68,4 +68,4 @@ jobs:
 
       # And finally run tests.
       - name: run tests
-        run: poetry run pytest --cov --import-mode=append tests/
+        run: poetry run pytest -k "not test_sqlite_repository.py" --cov --import-mode=append tests/

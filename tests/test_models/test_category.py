@@ -9,9 +9,9 @@ from bookkeeper.models.category import Category
 from bookkeeper.repository.memory_repository import MemoryRepository
 
 
-@pytest.fixture(autouse=True)
+@pytest.fixture(autouse=True, scope="module")
 def repo():
-    return MemoryRepository()
+    yield MemoryRepository()
 
 
 def test_create_object():
