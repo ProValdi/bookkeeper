@@ -6,7 +6,7 @@ from bookkeeper.repository.memory_repository import MemoryRepository
 from bookkeeper.models.expense import Expense
 
 
-@pytest.fixture(autouse=True)
+@pytest.fixture(autouse=True, scope="module", )
 def repo():
     return MemoryRepository()
 
