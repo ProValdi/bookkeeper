@@ -1,4 +1,4 @@
-![example workflow](https://github.com/ProValdi/bookkeeper/actions/workflows/automotive.yml/badge.svg)
+![example workflow](https://github.com/ProValdi/bookkeeper/actions/workflows/automotive.yaml/badge.svg)
 
 # Простая программа для управления личными финансами
 ## Параметры запуска
